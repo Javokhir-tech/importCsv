@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Import</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+
+  <body>
 <div class="container py-5">
     <div class="row">
         <div class="col-10 mx-auto">
@@ -7,26 +18,27 @@
                 <strong>Error:</strong>
                 <span th:text="${message}"></span>
             </div>
-
             <!--display users list-->
             <table class="table table-striped" th:if="${status}">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="Record, i : ${records}">
-                        <th scope="row" th:text="${i.index + 1}"></th>
-                        <td th:text="${records.id}"></td>
-                        <td th:text="${records.name}"></td>
-                        <td th:text="${records.date}"></td>
+                    <tr th:each="record: ${records}">
+                        <td th:text="${record.id}"></td>
+                      	<td th:text="${record.name}"></td>
+                        <td th:text="${record.date}"></td>
                     </tr>
+                	<!--  <td th:text="${record.id}"></td>   <span th:text="${records}" />  -->
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+</body>
+
+</html>

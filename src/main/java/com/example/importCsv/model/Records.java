@@ -26,12 +26,12 @@ public class Records {
 
     @Column(name = "date")
     @CsvBindByName
-    private SimpleDateFormat date;
+    private String date;
 
     public Records() {
     }
 
-    public Records(String id, String name, SimpleDateFormat date) {
+    public Records(String id, String name, String date) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -53,11 +53,11 @@ public class Records {
         this.name = name;
     }
 
-    public SimpleDateFormat getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(SimpleDateFormat date) {
+    public void setDate(String date) {
         this.date = date;
     }
     @Override
