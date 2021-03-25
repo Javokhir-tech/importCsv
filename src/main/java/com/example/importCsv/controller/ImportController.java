@@ -2,6 +2,8 @@ package com.example.importCsv.controller;
 
 import java.io.BufferedReader;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.example.importCsv.model.Records;
@@ -51,7 +53,11 @@ public class ImportController {
                     .build();
                 
                 // convert CsvToBean object to list of records
-                List<Records> records = csvToBean.parse();
+                ArrayList<Records> records = (ArrayList<Records>) csvToBean.parse();
+                // ArrayList<Records> records = (ArrayList<Records>) csvToBean.parse();
+                // sort
+                //Collections.sort(records);
+                Records.insertionSort(records);
                 
                 // save to db
                 repository.saveAll(records);
