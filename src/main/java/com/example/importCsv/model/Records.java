@@ -1,14 +1,11 @@
 package com.example.importCsv.model;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.opencsv.bean.CsvBindByName;
 
