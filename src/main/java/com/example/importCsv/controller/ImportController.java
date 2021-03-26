@@ -54,21 +54,34 @@ public class ImportController {
                 
                 // convert CsvToBean object to list of records
                 ArrayList<Records> records = (ArrayList<Records>) csvToBean.parse();
-                // ArrayList<Records> records = (ArrayList<Records>) csvToBean.parse();
+                
                 // sort
-                //Collections.sort(records);
                 Records.insertionSort(records);
+                
                 
                 // save to db
                 repository.saveAll(records);
                 
+                
+                // get array of parents
+                String parent = "";
+                ArrayList<String> parents = new ArrayList<String>();
+                for (Records record : records) {
+                	if (record.getId().contains(".")) {				// if parent exist
+                		parent = record.getId().substring(0, record.getId().indexOf("."));	// get it
+                		parents.add(parent);								// add to list
+                	}
+                	else
+                		parents.add("Null");
+				}
+                
                 // save users list on model
                 model.addAttribute("records", records);
                 model.addAttribute("status", true);
-                
+                model.addAttribute("parents", parents);
                 // catch
             } catch (Exception e) {
-                model.addAttribute("message", "error");
+                model.addAttribute("message", e);
                 model.addAttribute("status", false);
             }
         }

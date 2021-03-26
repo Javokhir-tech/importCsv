@@ -2,18 +2,20 @@ package com.example.importCsv.model;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.collections.ListUtils;
 
 import com.opencsv.bean.CsvBindByName;
 
 @Entity
 @Table(name = "records")
-public class Records implements Comparable<Records> {
+public class Records {
     @Id
     @Column(name = "id")
     @CsvBindByName
@@ -63,18 +65,8 @@ public class Records implements Comparable<Records> {
     public String toString() {
         return "Records [id=" + id + ", name=" + name + ", date=" + date + "]";
     }
-
-	@Override
-	public int compareTo(Records o) {
-		// TODO Auto-generated method stub
-		/*if (this.id > o.id) {
-			String temp = this.id;
-			this.id = o.id;
-			o.id = temp;
-			
-		}*/
-		return 0;
-	}
+    
+	// insertion sort
 	public static void insertionSort(ArrayList<Records> data) {
 		int n = data.size();
 		for (int k = 1; k < n; k++) {
