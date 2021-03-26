@@ -75,7 +75,7 @@ public class ImportController {
                 		parents.add("Null");
 				}
                 
-                // save users list on model
+                // save list on model to print it on thymeleaf
                 model.addAttribute("records", records);
                 model.addAttribute("status", true);
                 model.addAttribute("parents", parents);
